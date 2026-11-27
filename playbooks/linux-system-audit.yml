@@ -1,4 +1,3 @@
-
 ---
 - name: Dubbell - Linux System Audit
   hosts: vm1
