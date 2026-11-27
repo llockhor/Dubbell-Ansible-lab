@@ -1,6 +1,6 @@
 
 ---
-- name: DICTU - Linux connectivity test
+- name: DUBBELL - Linux connectivity test
   hosts: linux
   gather_facts: true
 
