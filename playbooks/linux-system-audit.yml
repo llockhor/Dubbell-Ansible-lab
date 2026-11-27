@@ -1,6 +1,6 @@
 ---
 - name: Dubbell - Linux System Audit
-  hosts: vm1
+  hosts: linux
   become: yes
   gather_facts: yes
 
