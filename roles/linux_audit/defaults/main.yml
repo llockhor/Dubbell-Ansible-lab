@@ -1,1 +1,6 @@
+---
+# Standaardinstellingen voor Linux Audit
 
+audit_check_uptime: true
+audit_check_disk: true
+audit_check_memory: true
