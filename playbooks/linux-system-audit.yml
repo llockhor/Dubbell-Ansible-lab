@@ -1,1 +1,44 @@
+---
+- name: DICTU - Linux System Audit
+  hosts: linux
+  become: false
+  gather_facts: true
+
+  tasks:
+
+    - name: Toon systeeminformatie
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_hostname }}"
+          - "Operating system: {{ ansible_distribution }}"
+          - "Version: {{ ansible_distribution_version }}"
+          - "Kernel: {{ ansible_kernel }}"
+          - "Architecture: {{ ansible_architecture }}"
+
+    - name: Controleer uptime
+      ansible.builtin.command: uptime -p
+      register: system_uptime
+      changed_when: false
+
+    - name: Toon uptime
+      ansible.builtin.debug:
+        var: system_uptime.stdout
+
+    - name: Controleer diskruimte
+      ansible.builtin.command: df -h /
+      register: disk_usage
+      changed_when: false
+
+    - name: Toon diskruimte
+      ansible.builtin.debug:
+        var: disk_usage.stdout
+
+    - name: Controleer geheugen
+      ansible.builtin.command: free -h
+      register: memory_usage
+      changed_when: false
+
+    - name: Toon geheugen
+      ansible.builtin.debug:
+        var: memory_usage.stdout
 
