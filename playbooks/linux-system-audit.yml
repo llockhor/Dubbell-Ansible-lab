@@ -1,8 +1,8 @@
 ---
-- name: Dubbell - Linux System Audit
+- name: DICTU - Linux System Audit
   hosts: linux
   become: false
   gather_facts: true
 
   roles:
-    linux_audit
+    - linux_audit
