@@ -1,18 +1,23 @@
 
 ---
-- name: Test Linux verbinding
+- name: DICTU - Linux connectivity test
   hosts: linux
-  become: false
   gather_facts: true
 
   tasks:
-    - name: Controleer verbinding
+    - name: Controleer SSH verbinding
       ansible.builtin.ping:
 
-    - name: Toon hostname
+    - name: Toon servernaam
       ansible.builtin.debug:
-        msg: "Servernaam: {{ ansible_hostname }}"
+        msg: "Server: {{ ansible_hostname }}"
 
     - name: Toon Linux distributie
       ansible.builtin.debug:
-        msg: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: >-
+          {{ ansible_distribution }}
+          {{ ansible_distribution_version }}
+
+    - name: Toon IP-adres
+      ansible.builtin.debug:
+        msg: "{{ ansible_default_ipv4.address }}"
