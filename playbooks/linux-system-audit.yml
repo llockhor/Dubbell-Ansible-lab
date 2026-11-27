@@ -1,6 +1,6 @@
 ---
-- name: Dubbell - Linux System Audit
-  hosts: linux
+- name: DICTU - Linux System Audit
+  hosts: vm1
   become: yes
   gather_facts: yes
 
