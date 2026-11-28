@@ -27,3 +27,25 @@
 - name: Display Apache status
   ansible.builtin.debug:
     msg: "Apache HTTP status: {{ apache_response.status }}"
+
+
+- name: Deploy custom Apache homepage
+  become: true
+  ansible.builtin.copy:
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+    content: |
+      <!DOCTYPE html>
+      <html lang="nl">
+      <head>
+        <meta charset="UTF-8">
+        <title>DICTU Ansible Lab</title>
+      </head>
+      <body>
+        <h1>DICTU Ansible Lab</h1>
+        <p>Deze server wordt beheerd met Ansible AWX.</p>
+      </body>
+      </html>
+  notify: Restart Apache
