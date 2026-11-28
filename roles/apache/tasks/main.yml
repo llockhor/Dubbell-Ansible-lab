@@ -1,1 +1,29 @@
+---
+- name: Update APT package cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
 
+- name: Install Apache
+  become: true
+  ansible.builtin.apt:
+    name: "{{ apache_package }}"
+    state: present
+
+- name: Ensure Apache is running
+  become: true
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: "{{ apache_state }}"
+    enabled: "{{ apache_enabled }}"
+
+- name: Check Apache HTTP response
+  ansible.builtin.uri:
+    url: http://127.0.0.1/
+    status_code: 200
+  register: apache_response
+
+- name: Display Apache status
+  ansible.builtin.debug:
+    msg: "Apache HTTP status: {{ apache_response.status }}"
