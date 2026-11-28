@@ -28,7 +28,6 @@
   ansible.builtin.debug:
     msg: "Apache HTTP status: {{ apache_response.status }}"
 
-
 - name: Deploy custom Apache homepage
   become: true
   ansible.builtin.copy:
