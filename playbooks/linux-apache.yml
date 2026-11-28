@@ -1,8 +1,7 @@
 ---
-- name: Dubbell - Apache Automation
-  hosts: linux
+- name: Configure Linux Apache Server
+  hosts: all
   become: true
-  gather_facts: true
 
   roles:
     - apache
